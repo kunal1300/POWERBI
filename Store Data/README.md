@@ -63,8 +63,8 @@ This Power BI project is an interactive dashboard built to analyze sales perform
 
 ## 📷 Dashboard Snapshots
 
-[sceenshot]Store Data/Screenshot 1.png
-
+[sceenshot]https://github.com/kunal1300/POWERBI/blob/main/Store%20Data/Screenshot%201.png
+https://github.com/kunal1300/POWERBI/blob/main/Store%20Data/Screenshot%202.png
 ---
 
 ## 📈 Skills Demonstrated
