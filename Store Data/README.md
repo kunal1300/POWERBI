@@ -95,4 +95,4 @@ This project is for **educational and portfolio purposes only**.
 ### 🔗 Connect with Me
 **Kunal Solanki**  
 📧 [Your Email]  
-🌐 [LinkedIn / GitHub Profile Link]
+🌐 [li](https://www.linkedin.com/in/kunal-solanki-a0a682158/)
