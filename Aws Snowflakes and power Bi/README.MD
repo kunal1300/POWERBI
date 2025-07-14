@@ -36,4 +36,10 @@ The raw data is stored in an AWS S3 bucket (`powerbi.project13`) and includes a 
 Feel free to fork this repository, make improvements, and submit pull requests. Ensure to update the documentation accordingly.
 
 ## for more detail
-[link](https://g.co/gemini/share/824716bb5bc7)
+[Click on link](https://g.co/gemini/share/824716bb5bc7)
+
+## Insights preview
+[Screenshot1] (https://github.com/kunal1300/POWERBI/blob/main/Aws%20Snowflakes%20and%20power%20Bi/Screenshot%201.png)
+
+
+
