@@ -34,3 +34,7 @@ The raw data is stored in an AWS S3 bucket (`powerbi.project13`) and includes a 
 ## Contributing
 
 Feel free to fork this repository, make improvements, and submit pull requests. Ensure to update the documentation accordingly.
+
+
+for more detail
+[link](https://g.co/gemini/share/824716bb5bc7)
