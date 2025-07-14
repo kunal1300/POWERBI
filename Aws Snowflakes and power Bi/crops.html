@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Climate & Agricultural Yield: A Data-Driven Infographic</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F8F9FA;
+            color: #001219;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 320px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 384px;
+            }
+        }
+        .kpi-card {
+            background-color: white;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            text-align: center;
+        }
+        .kpi-value {
+            font-size: 3rem;
+            font-weight: 900;
+            line-height: 1;
+            color: #005F73;
+        }
+        .kpi-label {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #0A9396;
+            margin-top: 0.5rem;
+        }
+        .flowchart-node {
+            background-color: #94D2BD;
+            color: #001219;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            font-weight: 600;
+            border: 2px solid #0A9396;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .flowchart-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: #0A9396;
+            transform: rotate(90deg);
+        }
+         @media (min-width: 1024px) {
+            .flowchart-arrow {
+                transform: rotate(0deg);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <header class="bg-[#005F73] text-white text-center py-12 px-4">
+        <h1 class="text-4xl md:text-6xl font-black tracking-tight">Decoding the Harvest</h1>
+        <p class="mt-4 text-lg md:text-xl max-w-3xl mx-auto text-[#E9D8A6]">An Infographic on the Interplay of Climate, Crops, and Agricultural Yields</p>
+    </header>
+
+    <main class="container mx-auto p-4 md:p-8">
+        
+        <section id="environment" class="my-12">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold text-[#005F73]">The Environmental Canvas</h2>
+                <p class="mt-2 max-w-2xl mx-auto text-gray-600">A look at the core climatic factors—rainfall, temperature, and humidity—that shape the agricultural landscape. While humidity remains stable, rainfall and temperature show significant variations.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                <div class="kpi-card">
+                    <p class="kpi-value">2.9K-3.8K</p>
+                    <p class="kpi-label">Rainfall Range (units)</p>
+                </div>
+                <div class="kpi-card">
+                    <p class="kpi-value">33-186</p>
+                    <p class="kpi-label">Temperature Range (units)</p>
+                </div>
+                <div class="kpi-card">
+                     <p class="kpi-value">55-56</p>
+                    <p class="kpi-label">Stable Humidity (units)</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold text-center text-[#005F73] mb-4">Seasonal Rainfall Distribution</h3>
+                    <p class="text-center text-sm text-gray-500 mb-4">Total rainfall is remarkably consistent across seasons, suggesting water volume isn't the primary differentiator for seasonal yield performance.</p>
+                    <div class="chart-container">
+                        <canvas id="rainfallBySeasonChart"></canvas>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold text-center text-[#005F73] mb-4">Seasonal Temperature Variation</h3>
+                     <p class="text-center text-sm text-gray-500 mb-4">Temperature shows a clear seasonal pattern, with the Rabi season being distinctly cooler than the warmer Kharif and Zaid seasons.</p>
+                    <div class="chart-container">
+                        <canvas id="tempBySeasonChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="yields" class="my-12">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold text-[#005F73]">The Yield Story</h2>
+                <p class="mt-2 max-w-2xl mx-auto text-gray-600">Productivity varies dramatically across seasons, locations, and crops, revealing key patterns for agricultural planning.</p>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold text-center text-[#005F73] mb-4">Yield by Season: The Rabi Advantage</h3>
+                    <p class="text-center text-sm text-gray-500 mb-4">The cooler Rabi season consistently produces the highest yields, highlighting the significant impact of temperature on overall productivity.</p>
+                    <div class="chart-container">
+                        <canvas id="yieldBySeasonChart"></canvas>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold text-center text-[#005F73] mb-4">Yield Hotspots & Coldspots by Location</h3>
+                    <p class="text-center text-sm text-gray-500 mb-4">Kodagu and Mysuru emerge as productivity leaders, while Davangere lags significantly, indicating strong regional performance differences.</p>
+                    <div class="chart-container">
+                        <canvas id="yieldByLocationChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="crops" class="my-12">
+             <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold text-[#005F73]">Crop Performance Deep Dive</h2>
+                <p class="mt-2 max-w-2xl mx-auto text-gray-600">A clear hierarchy exists in crop productivity. Cotton leads by a massive margin, while others like Cashew show very low returns, guiding choices for economic viability.</p>
+            </div>
+             <div class="bg-white p-6 rounded-lg shadow-md">
+                 <div class="chart-container h-96 md:h-[500px]">
+                    <canvas id="yieldByCropChart"></canvas>
+                </div>
+            </div>
+        </section>
+        
+        <section id="relationships" class="my-12">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold text-[#005F73]">Connecting the Dots: Key Relationships</h2>
+                <p class="mt-2 max-w-2xl mx-auto text-gray-600">Synthesizing the data reveals critical insights: cooler temperatures are strongly linked to higher yields, and high rainfall doesn't always guarantee a bumper crop.</p>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold text-center text-[#005F73] mb-4">Rainfall vs. Yield: More Isn't Always Better</h3>
+                    <p class="text-center text-sm text-gray-500 mb-4">There is no direct correlation between higher rainfall and higher yields. Locations like Kodagu and Mysuru achieve top yields with moderate rainfall, while high-rainfall Bangalore sees only average results. This highlights the importance of water efficiency over sheer volume.</p>
+                    <div class="chart-container">
+                        <canvas id="rainfallYieldScatter"></canvas>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold text-center text-[#005F73] mb-4">Temperature vs. Yield: The Cooler Advantage</h3>
+                     <p class="text-center text-sm text-gray-500 mb-4">An inverse relationship is clear: the cooler Rabi season has the highest yields, while the warmer Kharif and Zaid seasons are less productive. This suggests heat stress may be a significant limiting factor for many crops in the region.</p>
+                    <div class="chart-container">
+                        <canvas id="tempYieldComparisonChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="strategy" class="my-12">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold text-[#005F73]">Strategic Flow for Resilient Agriculture</h2>
+                <p class="mt-2 max-w-2xl mx-auto text-gray-600">Based on the data, a clear strategy emerges for optimizing agricultural outcomes through climate-smart planning and execution.</p>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-5 gap-4 items-center">
+                <div class="flowchart-node"><span>1. Leverage Rabi Season's Cooler Climate</span></div>
+                <div class="flowchart-arrow"><span>&#10140;</span></div>
+                <div class="flowchart-node"><span>2. Select Crops for Regional Climate & High-Yield Potential</span></div>
+                <div class="flowchart-arrow"><span>&#10140;</span></div>
+                <div class="flowchart-node"><span>3. Focus on Water Efficiency, Not Just Volume</span></div>
+                <div class="hidden lg:flex flowchart-arrow"><span>&#10140;</span></div>
+                <div class="col-span-1 lg:col-span-5 flex justify-center lg:justify-end my-4">
+                     <div class="flowchart-arrow transform -rotate-90 lg:-rotate-180"><span>&#10140;</span></div>
+                </div>
+                <div class="flowchart-node lg:col-start-3"><span>5. Develop Targeted Regional Plans</span></div>
+                <div class="flowchart-arrow"><span>&#10140;</span></div>
+                <div class="flowchart-node"><span>4. Monitor & Adapt to Temperature Trends</span></div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-[#001219] text-center p-6 mt-12">
+        <p class="text-gray-400">Infographic generated based on Climate & Agricultural Yield Analysis. All data is representative.</p>
+    </footer>
+
+    <script>
+        const brilliantBlues = {
+            primary: '#005F73',
+            secondary: '#0A9396',
+            accent: '#94D2BD',
+            highlight: '#E9D8A6',
+            background: '#F8F9FA',
+            text: '#001219',
+            lightAccent: 'rgba(148, 210, 189, 0.6)'
+        };
+
+        function wrapLabels(label) {
+            const max_len = 16;
+            if (label.length <= max_len) {
+                return label;
+            }
+            const words = label.split(' ');
+            let currentLine = '';
+            const lines = [];
+            for (const word of words) {
+                if ((currentLine + ' ' + word).length > max_len && currentLine.length > 0) {
+                    lines.push(currentLine);
+                    currentLine = word;
+                } else {
+                    currentLine = currentLine ? currentLine + ' ' + word : word;
+                }
+            }
+            if (currentLine) {
+                lines.push(currentLine);
+            }
+            return lines;
+        }
+
+        const commonTooltipOptions = {
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        title: function(tooltipItems) {
+                            const item = tooltipItems[0];
+                            let label = item.chart.data.labels[item.dataIndex];
+                            if (Array.isArray(label)) {
+                                return label.join(' ');
+                            } else {
+                                return label;
+                            }
+                        }
+                    }
+                }
+            }
+        };
+
+        const rainfallBySeasonCtx = document.getElementById('rainfallBySeasonChart');
+        if(rainfallBySeasonCtx) {
+            new Chart(rainfallBySeasonCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Rabi', 'Kharif', 'Zaid'],
+                    datasets: [{
+                        label: 'Average Rainfall (units)',
+                        data: [3105, 3097, 3070],
+                        backgroundColor: [brilliantBlues.accent, brilliantBlues.secondary, brilliantBlues.primary],
+                        borderColor: [brilliantBlues.accent, brilliantBlues.secondary, brilliantBlues.primary],
+                        borderWidth: 1
+                    }]
+                },
+                options: { ...commonTooltipOptions, responsive: true, maintainAspectRatio: false, scales: { y: { beginAtZero: true, min: 2900 } } }
+            });
+        }
+        
+        const tempBySeasonCtx = document.getElementById('tempBySeasonChart');
+        if(tempBySeasonCtx) {
+            new Chart(tempBySeasonCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Rabi', 'Kharif', 'Zaid'],
+                    datasets: [{
+                        label: 'Average Temperature (units)',
+                        data: [61, 72, 72],
+                        backgroundColor: [brilliantBlues.accent, brilliantBlues.secondary, brilliantBlues.primary],
+                        borderColor: [brilliantBlues.accent, brilliantBlues.secondary, brilliantBlues.primary],
+                        borderWidth: 1
+                    }]
+                },
+                options: { ...commonTooltipOptions, responsive: true, maintainAspectRatio: false, scales: { y: { beginAtZero: true } } }
+            });
+        }
+        
+        const yieldBySeasonCtx = document.getElementById('yieldBySeasonChart');
+        if(yieldBySeasonCtx) {
+            new Chart(yieldBySeasonCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Rabi', 'Kharif', 'Zaid'],
+                    datasets: [{
+                        label: 'Average Yield (K units)',
+                        data: [24.9, 20.2, 22.0],
+                        backgroundColor: [brilliantBlues.primary, brilliantBlues.secondary, brilliantBlues.accent],
+                        borderColor: [brilliantBlues.primary, brilliantBlues.secondary, brilliantBlues.accent],
+                        borderWidth: 1
+                    }]
+                },
+                options: { ...commonTooltipOptions, responsive: true, maintainAspectRatio: false, scales: { y: { beginAtZero: true, min: 18 } } }
+            });
+        }
+
+        const yieldByLocationCtx = document.getElementById('yieldByLocationChart');
+        if(yieldByLocationCtx) {
+            new Chart(yieldByLocationCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Davangere', 'Mangalore', 'Gulbarga', 'Bangalore', 'Hassan', 'Chikmangalur', 'Raichur', 'Kasaragod', 'Mysuru', 'Kodagu'],
+                    datasets: [{
+                        label: 'Average Yield (K units)',
+                        data: [11.8, 20.6, 21.5, 22.1, 22.9, 22.7, 23.8, 24.4, 27.6, 28.7],
+                        backgroundColor: brilliantBlues.secondary,
+                        borderColor: brilliantBlues.primary,
+                        borderWidth: 1
+                    }]
+                },
+                options: { ...commonTooltipOptions, indexAxis: 'y', responsive: true, maintainAspectRatio: false, scales: { x: { beginAtZero: true } } }
+            });
+        }
+        
+        const yieldByCropCtx = document.getElementById('yieldByCropChart');
+        if(yieldByCropCtx) {
+            const cropLabels = ['Cashew', 'Cardamom', 'Arecanut', 'Groundnut', 'Paddy', 'Blackgram', 'Tea', 'Ginger', 'Coconut', 'Cotton'];
+            new Chart(yieldByCropCtx, {
+                type: 'bar',
+                data: {
+                    labels: cropLabels.map(label => wrapLabels(label)),
+                    datasets: [{
+                        label: 'Average Yield (K units)',
+                        data: [3, 7, 9, 9, 10, 16, 23, 26, 34, 51],
+                        backgroundColor: brilliantBlues.primary,
+                        borderColor: brilliantBlues.secondary,
+                        borderWidth: 1
+                    }]
+                },
+                options: { ...commonTooltipOptions, indexAxis: 'y', responsive: true, maintainAspectRatio: false, scales: { x: { beginAtZero: true } } }
+            });
+        }
+        
+        const rainfallYieldScatterCtx = document.getElementById('rainfallYieldScatter');
+        if(rainfallYieldScatterCtx) {
+            new Chart(rainfallYieldScatterCtx, {
+                type: 'scatter',
+                data: {
+                    labels: ['Mysuru', 'Kodagu', 'Bangalore', 'Davangere', 'Raichur'],
+                    datasets: [{
+                        label: 'Location (Rainfall vs. Yield)',
+                        data: [
+                            { x: 2900, y: 27.6 }, 
+                            { x: 3000, y: 28.7 }, 
+                            { x: 3800, y: 22.1 },
+                            { x: 3000, y: 11.8 },
+                            { x: 3200, y: 23.8 }
+                        ],
+                        backgroundColor: brilliantBlues.primary,
+                        pointRadius: 8,
+                        pointHoverRadius: 12
+                    }]
+                },
+                options: { ...commonTooltipOptions, responsive: true, maintainAspectRatio: false, scales: { x: { type: 'linear', position: 'bottom', title: { display: true, text: 'Rainfall (units)' } }, y: { title: { display: true, text: 'Yield (K units)' } } } }
+            });
+        }
+        
+        const tempYieldComparisonCtx = document.getElementById('tempYieldComparisonChart');
+        if (tempYieldComparisonCtx) {
+            new Chart(tempYieldComparisonCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Rabi', 'Kharif', 'Zaid'],
+                    datasets: [
+                        {
+                            label: 'Average Temperature (units)',
+                            data: [61, 72, 72],
+                            backgroundColor: brilliantBlues.lightAccent,
+                            borderColor: brilliantBlues.accent,
+                            yAxisID: 'y'
+                        },
+                        {
+                            label: 'Average Yield (K units)',
+                            data: [24.9, 20.2, 22.0],
+                            backgroundColor: brilliantBlues.primary,
+                            borderColor: brilliantBlues.secondary,
+                            yAxisID: 'y1'
+                        }
+                    ]
+                },
+                options: {
+                    ...commonTooltipOptions,
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            type: 'linear',
+                            display: true,
+                            position: 'left',
+                            title: { display: true, text: 'Temperature (units)'}
+                        },
+                        y1: {
+                            type: 'linear',
+                            display: true,
+                            position: 'right',
+                            title: { display: true, text: 'Yield (K units)'},
+                            grid: { drawOnChartArea: false } 
+                        }
+                    }
+                }
+            });
+        }
+
+    </script>
+</body>
+</html>
