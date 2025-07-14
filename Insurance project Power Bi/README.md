@@ -101,7 +101,3 @@ This dashboard is ideal for:
 - Enable real-time data refresh using Power BI Service.
 - Add RLS (Row-Level Security) to restrict data by user role.
 
----
-
-## 📎 File Structure
-
