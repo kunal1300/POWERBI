@@ -42,4 +42,11 @@ Feel free to fork this repository, make improvements, and submit pull requests. 
 ### screenshot 1
 ![Dashboard Screenshot 1](https://github.com/kunal1300/POWERBI/blob/main/Aws%20Snowflakes%20and%20power%20Bi/Screenshot%201.png)
 
+![Dashboard Screenshot 2](https://github.com/kunal1300/POWERBI/blob/main/Aws%20Snowflakes%20and%20power%20Bi/Screenshot%202.png)
+
+![Dashboard Screenshot 3](https://github.com/kunal1300/POWERBI/blob/main/Aws%20Snowflakes%20and%20power%20Bi/Screenshot%203.png)
+
+![Dashboard Screenshot 4](https://github.com/kunal1300/POWERBI/blob/main/Aws%20Snowflakes%20and%20power%20Bi/Screenshot%204.png)
+
+
 
