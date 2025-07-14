@@ -39,7 +39,7 @@ Feel free to fork this repository, make improvements, and submit pull requests. 
 [Click on link](https://g.co/gemini/share/824716bb5bc7)
 
 ## Insights preview
-### screenshot 1
+### Dashboard 
 ![Dashboard Screenshot 1](https://github.com/kunal1300/POWERBI/blob/main/Aws%20Snowflakes%20and%20power%20Bi/Screenshot%201.png)
 
 ![Dashboard Screenshot 2](https://github.com/kunal1300/POWERBI/blob/main/Aws%20Snowflakes%20and%20power%20Bi/Screenshot%202.png)
@@ -47,6 +47,13 @@ Feel free to fork this repository, make improvements, and submit pull requests. 
 ![Dashboard Screenshot 3](https://github.com/kunal1300/POWERBI/blob/main/Aws%20Snowflakes%20and%20power%20Bi/Screenshot%203.png)
 
 ![Dashboard Screenshot 4](https://github.com/kunal1300/POWERBI/blob/main/Aws%20Snowflakes%20and%20power%20Bi/Screenshot%204.png)
+
+## Aws(S3)
+
+![ Screenshot 5](https://github.com/kunal1300/POWERBI/blob/3675d25444e41e441b621672a7e039ca3698a9b9/Aws%20Snowflakes%20and%20power%20Bi/AWS%20S3.png)
+
+## Snowflakes Dashboard
+![ Screenshot 6](https://github.com/kunal1300/POWERBI/blob/3675d25444e41e441b621672a7e039ca3698a9b9/Aws%20Snowflakes%20and%20power%20Bi/snowflakes.png)
 
 
 
